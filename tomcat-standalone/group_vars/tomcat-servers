@@ -7,3 +7,5 @@ https_port: 8443
 
 admin_username: admin
 admin_password: adminsecret
+warName: sample.war
+warRemotePath: /tmp
