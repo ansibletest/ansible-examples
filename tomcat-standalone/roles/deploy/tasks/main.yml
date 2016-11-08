@@ -1,12 +1,10 @@
 ---
 
   - name: Download WAR to server
-    command: wget http://192.168.2.143:8080/job/Tomcat/default/lastSuccessfulBuild/artifact/target/helloworld-1.0.0-BUILD-SNAPSHOT.war -O {{ warRemotePath }}/{{ warName }}
+    copy: src=helloworld-1.0.0-BUILD-SNAPSHOT.war dest=/tmp
   
   - name: Unzip WAR file
-    unarchive: src={{ warRemotePath }}/{{ warName }} dest=/usr/share/tomcat/webapps/ copy=no mode=0755 owner=tomcat group=tomcat
+    unarchive: src=/tmp/helloworld-1.0.0-BUILD-SNAPSHOT.war dest=/usr/share/tomcat/webapps/helloworld copy=no mode=0755 owner=tomcat group=tomcat
     notify:
         - restart tomcat
    
-  - name: Delete remote war file
-    file: path={{ warRemotePath }}/{{ warName }} state=absent

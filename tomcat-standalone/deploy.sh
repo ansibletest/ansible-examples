@@ -1,1 +1,1 @@
-ansible-playbook /root/ansible-examples/tomcat-standalone/site.yml
+ansible-playbook -i hosts /root/ansible-examples/tomcat-standalone/site.yml
